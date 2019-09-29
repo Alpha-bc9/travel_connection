@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','FrontpageController@index')->name('home');
+Route::get('/about','FrontpageController@about')->name('about');
+Route::get('/tour','FrontpageController@tour')->name('tour');
+Route::get('/hotel','FrontpageController@hotel')->name('hotel');
+Route::get('/blog','FrontpageController@blog')->name('blog');
+Route::get('/contact','FrontpageController@contact')->name('contact');
