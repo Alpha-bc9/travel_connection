@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -36,4 +39,38 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function guardLogin(Request $request,$guard){
+       
+
+       return $this->validate($request,
+            [
+                'email'=>'required|email',
+                'password'=>'required|min:6'
+          
+            
+
+
+            ]);
+    }
+
+    public function CompanyLoginform()
+    {
+        // dd(Config::get('constants.guards.company'));
+
+        return view('auth.login',[
+            'url'=>Config::get('constants.guards.company')
+        ]);
+    }
+
+    public function CompanyLogin(Request $request)
+    {
+        //dd($request);
+        if ($this->guardLogin($request,Config::get('constants.guards.company'))) {
+           return redirect()->route('booking.index');
+        }
+        return back()->withInput($request->only('email','remember'));
+    }
+    
+    
 }

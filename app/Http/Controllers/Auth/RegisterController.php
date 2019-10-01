@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class RegisterController extends Controller
 {
@@ -48,10 +49,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone'=>['required','min:11'],
+            'address'=>['required'],
+            'profile'=>['required']
         ]);
     }
 
@@ -63,10 +68,38 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        // dd(Input::file('profile'));
+      // dd($data['profile']);
+
+    // dd($data);
+
+        
+        if ($data['profile']) 
+        {
+            $profile = $data['profile'];
+            $upload_path = public_path().'/storage/images/';
+            $name = $profile->getClientOriginalName();
+            $profile -> move($upload_path,$name);
+            $path = '/storage/images/'.$name;
+
+        }
+        else
+        {
+            $path="";
+        }
+
+        //dd($path);
+
+        
+        $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' =>$data['phone'],
+            'address' =>$data['address'],
+            'profile' =>$path
         ]);
-    }
-}
+
+        
+
+}}

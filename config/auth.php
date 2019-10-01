@@ -46,6 +46,17 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+         'company' => [
+            'driver' => 'session',
+            'provider' => 'companies',
+        ],
+
+        'company_api' => [
+            'driver' => 'token',
+            'provider' => 'companies',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -75,6 +86,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'companies' => [
+            'driver' => 'eloquent',
+            'model' => App\Companies::class,
+        ],
     ],
 
     /*
@@ -98,6 +114,13 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+         'companies' => [
+            'provider' => 'companies',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
     ],
+   
 
 ];
