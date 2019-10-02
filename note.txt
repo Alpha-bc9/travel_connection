@@ -1,0 +1,151 @@
+ @foreach($packages as $package)
+                        
+                          
+                          <img class="card-img"  src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg" alt="Bologna">
+
+                          
+                          <div class="card-body">
+                            <h4 class="card-title text-center">{{$package->name}}</h4>
+                            <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+
+                              <small class="text-muted cat">
+                              
+                              <i class="fa fa-calendar"></i>19/12/2019
+                            </small>
+
+                            <small class="text-muted cat">
+                              <i class="far fa-clock text-info"></i> Mon to Fri
+                              
+                            </small>
+                            <small class="text-muted cat">
+                              
+                             <i class="fa fa-dollar-sign"></i>50
+                            </small>
+                          </div>
+                            <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
+
+                           
+
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalQuickView" style="width: 100%">Detail</button>
+                          </div>
+                          <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                           
+                            <div class="stats">
+                              
+
+                              @php
+                                $lunl=$package->likes()->first()->like;
+                                @endphp
+                                
+
+
+                                  @if($lunl==0)
+
+
+
+                              <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-down"></i></a>
+
+                                @else
+
+                                 
+
+
+
+                              <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-up"></i></a>
+
+                                @endif
+
+
+
+                              
+                                
+
+
+                               
+
+                              
+
+                              
+                            </div>
+                            <div class="stats">
+
+
+                              <a href="#" data-comment="{{ $package->id }}"><i id="comment{{$package->id}}" class="far fa-comment"></i></a>
+
+                              </div>
+                            <div class="stats">
+
+                              <a href="#"> <i class="fa fa-share"></i></a>
+                               12
+                            </div>
+                             
+                          </div>
+                        
+                      @endforeach
+
+
+
+
+                      <div class="stats">
+                              
+
+                              @php
+                                $lunl=$package->likes()->first()->count;
+                                $likedatabase=$package->likes()->first()->count();
+                                @endphp
+
+                                @if($likedatabase>0)
+                                
+
+
+                                  @if($lunl==0)
+
+
+
+                              <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-down"></i></a>
+
+                                @else
+
+                                 
+
+
+
+                              <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-up"></i></a>
+
+                                @endif
+
+                                @else
+
+
+                                <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-down"></i></a>
+
+
+
+                                @endif                   
+                                
+
+
+                               
+
+                              
+
+                              
+                            </div>
+                            <div class="stats">
+
+
+                              <a href="#" data-comment="{{ $package->id }}"><i id="comment{{$package->id}}" class="far fa-comment"></i></a>
+
+                              </div>
+                            <div class="stats">
+
+                              <a href="#"> <i class="fa fa-share"></i></a>
+                               12
+                            </div>
+                             
+                          </div>

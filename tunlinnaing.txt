@@ -1,0 +1,103 @@
+if($likecomment->count()==1){
+             $likecomment =Likes::where('package_id',request('pid'))
+                ->first();
+
+                if($likecomment->like==1)
+                {
+            
+
+            $likecomment->package_id=request('pid');
+            $likecomment->like=0;
+            $likecomment->comment="";
+        }else
+        {
+              $likecomment->package_id=request('pid');
+            $likecomment->like=1;
+            $likecomment->comment="";
+        }
+            $likecomment->save();
+
+           
+             
+         
+
+           //dd($likecomment);
+
+
+            
+          //  dd($likecomment);
+            
+        }else{
+
+
+            Likes::create([
+
+            "package_id"=>request('pid'),
+            "like"=>1,
+            "comment"=>"",
+
+             
+            
+
+
+        ]);
+             
+            
+
+            
+        }
+
+
+
+
+         if($countlike->count()==1){
+
+                    
+
+                    $findlike =Likes::where('packages_id',request('pid'))
+                                ->where('user_id',Auth::user()->id)
+                                ->get('id');
+
+                    $like=Likes::find($findlike);                
+                    
+
+                    $like->packages_id=request('pid');
+                    $like->like=0;
+                    $like->user_id=Auth::user()->id;
+                }
+                else{
+                     
+                    $like->packages_id=request('pid');
+                    $like->like=1;
+                    $like->user_id=Auth::user()->id;
+                
+                    $like->save();
+
+                    dd($like);
+
+                }
+
+        
+
+       
+       
+
+
+        }
+
+        else{
+
+           // dd($like);
+           $like=Likes::create([
+            "packages_id"=>request('pid'),
+            "user_id"=>Auth::user()->id,            
+            "count"=>1         
+        ]);
+
+           
+             
+
+
+        }
+
+

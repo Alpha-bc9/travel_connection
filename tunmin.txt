@@ -1,0 +1,378 @@
+  @foreach($likes as $likebypackage)
+    @if($likebypackage->packages_id==$package->id)         
+
+        @if($likebypackage->count==0)
+	        <a href="#" id="icon" data-like="{{ $package->id }}">
+	          <i id="like{{$package->id}}" class="far fa-thumbs-down"></i><span>{{$likecheck->count()}}</span>
+	        </a>
+	      @else 
+	         <a href="#" id="icon" data-like="{{ $package->id }}">
+	          <i id="like{{$package->id}}" class="far fa-thumbs-up"></i><span>{{$likecheck->count()}}</span>
+	        </a>
+
+
+	      @endif 
+	    
+	    @endif    
+   @endforeach 
+     
+
+     @extends('maintemplate')
+@section('content')
+
+  <section class="ftco-section ftco-destination">
+    	<div class="container">
+    		<div class="row justify-content-start mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate">
+          	<span class="subheading">Featured</span>
+            <h2 class="mb-4"><strong>Featured</strong> Destination</h2>
+          </div>
+        </div>
+    		<div class="row">
+    			<div class="col-md-12">
+    				<div class="destination-slider owl-carousel ftco-animate">
+    					<div class="item">
+		    				<div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-1.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3">
+		    						<h3><a href="#">Paris, Italy</a></h3>
+		    						<span class="listing">15 Listing</span>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="item">
+		    				<div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-2.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3">
+		    						<h3><a href="#">San Francisco, USA</a></h3>
+		    						<span class="listing">20 Listing</span>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="item">
+		    				<div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3">
+		    						<h3><a href="#">Lodon, UK</a></h3>
+		    						<span class="listing">10 Listing</span>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="item">
+		    				<div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-4.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3">
+		    						<h3><a href="#">Lion, Singapore</a></h3>
+		    						<span class="listing">3 Listing</span>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="item">
+		    				<div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-5.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3">
+		    						<h3><a href="#">Australia</a></h3>
+		    						<span class="listing">3 Listing</span>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="item">
+		    				<div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-6.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3">
+		    						<h3><a href="#">Paris, Italy</a></h3>
+		    						<span class="listing">3 Listing</span>
+		    					</div>
+		    				</div>
+	    				</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+    <section class="ftco-section bg-light">
+    	<div class="container">
+				<div class="row justify-content-start mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate">
+          	<span class="subheading">Special Offers</span>
+            <h2 class="mb-4"><strong>Top</strong> Tour Packages</h2>
+          </div>
+        </div>    		
+    	</div>
+    	<div class="container-fluid">
+    		<div class="row">
+          @foreach($packages as $package)
+          <div class="col-sm-3 col-md-3 col-lg-3 ftco-animate">
+            <div class="destination">
+              <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-1.jpg);">
+                <div class="icon d-flex justify-content-center align-items-center">
+                  <span class="icon-search2"></span>
+                </div>
+              </a>
+              <div class="text p-3">
+                <div class="d-flex">
+                  <div class="one">
+                    <h3><a href="#">{{$package->name}}</a></h3>
+                    <p class="rate">
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star-o"></i>
+                      <span>8 Rating</span>
+                    </p>
+                  </div>
+                  <div class="two">
+                    <span class="price"><small class="text-muted cat"> <i class="fa fa-dollar-sign"></i></i></small>&nbsp;{{$package->price}}</span>
+                  </div>
+                </div>
+                <p>{{$package->description}}</p>
+                <p class="days"><span>{{$package->duration}}</span></p>
+                <hr>
+                <p class="bottom-area d-flex">
+                  <span><small class="text-muted cat"> <i class="fa fa-calendar"></i></small>&nbsp;{{$package->depature_date}}</span>
+                  <span class="ml-auto"><a href="#">More Detail</a></span>
+                </p>
+                 @if(Auth::check())
+                 <hr>
+                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+
+
+               
+                <div class="stats">                 
+
+                   @php
+                    $likecheck=$package->numberoflikes()->get();
+                    
+
+                  @endphp 
+
+
+                    
+                  
+
+                  @if($likecheck->count()>0) 
+
+                  
+
+
+                    
+                      @foreach($likes as $likebypackage)
+                        @if($likebypackage->packages_id==$package->id)         
+
+                            @if($likebypackage->count==0)
+                              <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-down"></i><span>{{$likecheck->count()}}</span>
+                              </a>
+                            @else 
+                               <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-up"></i><span>{{$likecheck->count()}}</span>
+                              </a>
+
+
+                            @endif 
+                          @else
+                            
+                          
+                          @endif    
+                       @endforeach 
+
+
+
+                         
+                  
+
+                    @else
+
+                        <a href="#" id="icon" data-like="{{ $package->id }}">
+                        <i id="like{{$package->id}}" class="far fa-thumbs-down"></i><span>0</span>
+                      </a>
+
+                    @endif       
+                 </div>
+                <div class="stats">
+                  <a href="#" data-comment="{{ $package->id }}">
+                    <i id="comment{{$package->id}}" class="far fa-comment"></i>
+                  </a>
+
+                </div>
+                <div class="stats">
+
+                  <a href="#"> <i class="fa fa-share"></i></a>
+                   Share
+                </div>
+                 
+              </div>
+
+              @endif
+              </div>
+            </div>
+          </div>
+          @endforeach
+    			
+
+    		</div>
+    	</div>
+    </section>
+
+   
+
+@endsection
+
+@section('script')
+  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+  <script type="text/javascript">
+    $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+    /*function likecomment(packageId) {
+    //  alert(packageId);
+
+         $.post('{{route("getlike")}}',{pid:packageId},function (response) {
+            console.log(response);
+
+          });
+
+          
+            
+          return true;
+          
+    };
+*/
+    $(document).ready(function() {
+
+
+      route("Home", ['id' => 1]);
+
+
+      $('[data-like]').on('click', function(e) {
+
+        var packageId=$(this).data('like');
+        //console.log(packageId);
+
+        $.post('{{route("getlike")}}',{pid:packageId},function(response){
+            //console.log(response.id);
+            //alert(response.like);
+            var likeunlike=parseInt(response.like);
+
+            if(likeunlike==1){
+
+              var c=likeunlike.toString();
+            $('#likecount').text(c);
+
+            
+            icon = $('#'+'like'+packageId);
+            /*icon.addClass("fa-thumbs-o-up fa-thumbs-up");
+            icon.removeClass("fa-thumbs-o-up fa-thumbs-up");*/
+
+            icon.toggleClass("fa-thumbs-up fa-thumbs-down")
+
+
+            }else{
+
+               var c=likeunlike.toString();
+            $('#likecount').text(c);
+
+            
+            icon =  $('#'+'like'+packageId);
+
+            icon.toggleClass("fa-thumbs-down fa-thumbs-up")
+
+            }
+           
+          });
+
+          });
+
+      $('[data-comment]').on('click', function(e) {
+
+        var packageId=$(this).data('comment');
+        //console.log(packageId);
+
+        alert(packageId);
+         $("#idkl").val( packageId );
+
+        $('#commentModel').modal('show');
+       
+          
+
+       
+
+          });
+        
+    });
+  </script>
+@endsection
+
+
+
+ @if(Auth::user()->id==$likebypackage->user_id)
+
+                        @if($likebypackage->packages_id==$package->id)   
+
+                          <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-up"></i><span>{{$likecheck->count()}}</span>
+                              </a>
+
+                          @endif
+
+                        @else
+
+                            @if($likebypackage->packages_id==$package->id)   
+
+
+                            <a href="#" id="icon" data-like="{{ $package->id }}">
+                                    <i id="like{{$package->id}}" class="far fa-thumbs-down"></i><span>{{$likecheck->count()}}</span>
+                                  </a>
+
+                             @endif 
+
+                        @endif
+
+
+
+                        @if(Auth::user()->id==$likebypackage->user_id && $likebypackage->packages_id==$package->id)   
+
+                          <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-up"></i><span>{{$likecheck->count()}}</span>
+                              </a>
+
+                           @else
+                           
+
+                                 <a href="#" id="icon" data-like="{{ $package->id }}">
+                                <i id="like{{$package->id}}" class="far fa-thumbs-down"></i><span>{{$likecheck->count()}}</span>
+                              </a>
+               
+                              
+
+                          @endif
+                          
